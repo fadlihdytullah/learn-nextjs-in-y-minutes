@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Geist_Mono, Inter } from "next/font/google";
+import BrandMark from "./_lib/BrandMark";
 import Nav from "./_lib/Nav";
 import PrevNext from "./_lib/PrevNext";
 import ThemeToggle from "./_lib/ThemeToggle";
@@ -42,7 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <header className="topbar">
           <Link href="/" className="brand">
-            <span className="brand-mark" aria-hidden />
+            <BrandMark />
             Learn Next.js in Y Minutes
           </Link>
           <div className="topbar-actions">
@@ -54,10 +55,22 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <aside>
             <Nav />
           </aside>
-          <main>
-            {children}
-            <PrevNext />
-          </main>
+          <div className="content">
+            <main>
+              {children}
+              <PrevNext />
+            </main>
+            <footer className="footer">
+              <span>
+                Built by{" "}
+                <a href="https://github.com/fadlihdytullah">Fadli Hidayatullah</a>
+                {" · "}
+                <a href="https://github.com/fadlihdytullah/learn-nextjs-in-y-minutes">
+                  Source on GitHub
+                </a>
+              </span>
+            </footer>
+          </div>
         </div>
       </body>
     </html>

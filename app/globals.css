@@ -83,8 +83,6 @@ body {
 .brand-mark {
   width: 14px;
   height: 16px;
-  border: 3px solid var(--fg);
-  background: linear-gradient(var(--bg) 50%, var(--fg-subtle) 50%);
 }
 
 .pill {
@@ -167,7 +165,14 @@ aside {
   border-right: 1px solid var(--border);
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 52px);
+}
+
 main {
+  flex: 1;
   width: 100%;
   max-width: 860px;
   padding: 56px 48px 80px;
@@ -340,7 +345,7 @@ a:focus-visible {
 
 .pixel-title svg {
   display: block;
-  width: min(100%, 460px);
+  width: min(100%, 560px);
   height: auto;
   margin: 8px 0 28px;
 }
@@ -574,6 +579,24 @@ main > .prev-next {
   color: var(--fg-subtle);
   font-size: 12px;
   font-weight: 400;
+}
+
+/* ─── Footer ────────────────────────────────────────────── */
+
+/* Mirrors the top bar: full width of the content column, so its border meets the sidebar's. */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 52px;
+  padding: 0 20px;
+  border-top: 1px solid var(--border);
+  color: var(--fg-subtle);
+  font-size: 13px;
+}
+
+.footer a {
+  color: var(--fg-muted);
 }
 
 /* ─── Mobile: sidebar becomes a horizontal strip ────────── */
