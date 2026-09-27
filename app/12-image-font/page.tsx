@@ -1,3 +1,4 @@
+import Quiz from "../_lib/Quiz";
 import Source from "../_lib/Source";
 import FontDemo from "./FontDemo";
 import Photo from "./Photo";
@@ -105,6 +106,41 @@ const geistMono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"] });
           families: each one is extra bytes on every page.
         </p>
       </div>
+
+      <Quiz
+        questions={[
+          {
+            q: "Why does an imported local image support `placeholder=\"blur\"` with nothing else?",
+            options: [
+              "Next.js reads its size and a blurred preview at build time",
+              "The browser generates the blur",
+              "Blur is built into every `<img>`",
+            ],
+            answer: 0,
+            explanation: "Remote images cannot be read at build time, so they need more setup.",
+          },
+          {
+            q: "What does a remote image need that a local import does not?",
+            options: [
+              "An `alt` text",
+              "Its domain allow-listed and an explicit `width` and `height`",
+              "The `priority` prop",
+            ],
+            answer: 1,
+            explanation: "Next.js cannot read the remote file at build time, so you supply the size (or `fill`).",
+          },
+          {
+            q: "Where does `next/font` serve a Google font from?",
+            options: [
+              "Google's font servers",
+              "A CDN picked at runtime",
+              "Your own domain, downloaded at build time",
+            ],
+            answer: 2,
+            explanation: "The browser never calls Google, and the text does not jump when the font loads.",
+          },
+        ]}
+      />
     </>
   );
 }

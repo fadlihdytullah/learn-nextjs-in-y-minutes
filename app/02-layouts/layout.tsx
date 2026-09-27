@@ -1,3 +1,4 @@
+import Quiz from "../_lib/Quiz";
 import Source from "../_lib/Source";
 import Counter from "./Counter";
 import Tabs from "./Tabs";
@@ -114,6 +115,41 @@ export default function SaveButton() {
           the data it protects.
         </p>
       </div>
+
+      <Quiz
+        questions={[
+          {
+            q: "How does a layout receive the active page?",
+            options: [
+              "Through a `page` prop",
+              "Through the `children` prop",
+              "By importing `page.tsx`",
+            ],
+            answer: 1,
+            explanation: "Next.js passes the matching page into the layout as `children`.",
+          },
+          {
+            q: "Why does the counter keep its value when you switch tabs?",
+            options: [
+              "The layout does not remount; only `children` changes",
+              "The value is saved in localStorage",
+              "Next.js reloads the page with the old state",
+            ],
+            answer: 0,
+            explanation: "Rename the file to `template.tsx` if you want a fresh instance on every navigation.",
+          },
+          {
+            q: "Why should an auth check not live only in a layout?",
+            options: [
+              "Layouts cannot read cookies",
+              "Layouts only run at build time",
+              "A layout does not re-render on client navigation",
+            ],
+            answer: 2,
+            explanation: "Check access in each page or next to the data it protects.",
+          },
+        ]}
+      />
     </>
   );
 }

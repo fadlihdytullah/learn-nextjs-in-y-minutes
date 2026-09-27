@@ -4,9 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { lessons } from "./lessons";
+import { useProgress } from "./progress";
 
 export default function Nav() {
   const pathname = usePathname();
+  const done = useProgress();
 
   useEffect(() => {
     document
@@ -26,6 +28,11 @@ export default function Nav() {
             >
               <span className="nav-num">{String(i + 1).padStart(2, "0")}</span>
               {l.title}
+              {done.includes(l.slug) && (
+                <span className="nav-done" aria-label="completed">
+                  ✓
+                </span>
+              )}
             </Link>
           </li>
         ))}

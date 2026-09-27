@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Quiz from "../_lib/Quiz";
 import Source from "../_lib/Source";
 import GuestbookForm from "./GuestbookForm";
 import Messages from "./Messages";
@@ -98,6 +99,41 @@ export default function Page() {
           submit the form twice.
         </p>
       </div>
+
+      <Quiz
+        questions={[
+          {
+            q: "What turns every exported function in a file into a Server Action?",
+            options: [
+              "`\"use client\"` at the top",
+              "`\"use server\"` at the top",
+              "Putting the file in an `api/` folder",
+            ],
+            answer: 1,
+            explanation: "Calling one sends a POST request to your server.",
+          },
+          {
+            q: "Why should every Server Action validate its input?",
+            options: [
+              "Anyone can call it, like a public API endpoint",
+              "Server Actions run in the browser",
+              "Forms cannot send `FormData` without it",
+            ],
+            answer: 0,
+            explanation: "Also check who is asking, not just what they sent.",
+          },
+          {
+            q: "What does `useActionState` give you?",
+            options: [
+              "A cached copy of the form data",
+              "An automatic redirect after submit",
+              "The action's last return value and a `pending` flag",
+            ],
+            answer: 2,
+            explanation: "That is how the guestbook shows its validation error and pending state.",
+          },
+        ]}
+      />
     </>
   );
 }

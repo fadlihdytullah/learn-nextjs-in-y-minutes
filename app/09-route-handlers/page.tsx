@@ -1,3 +1,4 @@
+import Quiz from "../_lib/Quiz";
 import Source from "../_lib/Source";
 import Caller from "./Caller";
 
@@ -126,6 +127,41 @@ async function getProducts() {
 }`}
         />
       </div>
+
+      <Quiz
+        questions={[
+          {
+            q: "How do you make a `route.ts` answer POST requests?",
+            options: [
+              "Export a function named `POST`",
+              "Add `method: \"POST\"` to the config",
+              "Handle every method in a default export",
+            ],
+            answer: 0,
+            explanation: "Export one function per HTTP method. Any other method gets a `405`.",
+          },
+          {
+            q: "Can one folder hold both a `page.tsx` and a `route.ts`?",
+            options: [
+              "Yes, the page wins",
+              "No, never both",
+              "Yes, but only for GET",
+            ],
+            answer: 1,
+            explanation: "That is why the demo endpoint lives in its own `api/hello/` folder.",
+          },
+          {
+            q: "When should you use a Route Handler instead of a Server Action?",
+            options: [
+              "To change data from your own forms",
+              "To show data in your own pages",
+              "To serve webhooks, mobile apps, or third parties",
+            ],
+            answer: 2,
+            explanation: "Your own forms and buttons are better served by Server Actions.",
+          },
+        ]}
+      />
     </>
   );
 }

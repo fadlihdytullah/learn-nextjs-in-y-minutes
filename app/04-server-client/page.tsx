@@ -1,4 +1,5 @@
 import Figure from "../_lib/Figure";
+import Quiz from "../_lib/Quiz";
 import Source from "../_lib/Source";
 import LikeButton from "./LikeButton";
 import Platform from "./Platform";
@@ -121,6 +122,41 @@ export default function Page() {
           <code>server-only</code>.
         </p>
       </div>
+
+      <Quiz
+        questions={[
+          {
+            q: "Where does a component run if its file has no directive?",
+            options: [
+              "Only in the browser",
+              "Only on the server, as a Server Component",
+              "On the server, then again in the browser",
+            ],
+            answer: 1,
+            explanation: "In the App Router, every component is a Server Component unless you add `\"use client\"`.",
+          },
+          {
+            q: "Which prop can a Server Component not pass to a Client Component?",
+            options: [
+              "A Date",
+              "A Promise",
+              "A function",
+            ],
+            answer: 2,
+            explanation: "Props cross the network, so they must be serializable. Functions are not.",
+          },
+          {
+            q: "How can a Client Component show a Server Component?",
+            options: [
+              "By receiving it as `children`",
+              "By importing it directly",
+              "By adding `\"use server\"` to it",
+            ],
+            answer: 0,
+            explanation: "The server renders the child; the client only decides whether to show it.",
+          },
+        ]}
+      />
     </>
   );
 }

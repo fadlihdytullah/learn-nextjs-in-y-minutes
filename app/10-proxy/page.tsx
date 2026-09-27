@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
+import Quiz from "../_lib/Quiz";
 import Source from "../_lib/Source";
 import Greeting from "./Greeting";
 
@@ -115,6 +116,41 @@ export default function Page() {
           authorization belongs next to the data, in your pages, Server Actions, and Route Handlers.
         </p>
       </div>
+
+      <Quiz
+        questions={[
+          {
+            q: "What was `proxy.ts` called before Next.js 16?",
+            options: [
+              "`server.ts`",
+              "`middleware.ts`",
+              "`handler.ts`",
+            ],
+            answer: 1,
+            explanation: "Same idea, new name: code that runs before a request reaches your routes.",
+          },
+          {
+            q: "How does a rewrite differ from a redirect?",
+            options: [
+              "A rewrite keeps the original URL; a redirect changes it",
+              "A redirect keeps the original URL; a rewrite changes it",
+              "A rewrite only works for images",
+            ],
+            answer: 0,
+            explanation: "A redirect tells the browser to go elsewhere, so the address bar changes.",
+          },
+          {
+            q: "What happens if the proxy has no `matcher`?",
+            options: [
+              "It never runs",
+              "It runs only on pages",
+              "It runs on every request, including JavaScript, CSS, and images",
+            ],
+            answer: 2,
+            explanation: "The `matcher` limits which paths the proxy runs on.",
+          },
+        ]}
+      />
     </>
   );
 }

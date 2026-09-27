@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Quiz from "../_lib/Quiz";
 import Source from "../_lib/Source";
 import Greeting from "./Greeting";
 
@@ -109,6 +110,41 @@ export default function RoutingPage() {
           <code>app/_components</code> or outside <code>app/</code> entirely.
         </p>
       </div>
+
+      <Quiz
+        questions={[
+          {
+            q: "When does a folder inside `app/` become a public page?",
+            options: [
+              "As soon as the folder exists",
+              "Once it contains a `page.tsx`",
+              "Once it is added to a router config",
+            ],
+            answer: 1,
+            explanation: "Folders are URL segments, but only a `page.tsx` makes one public.",
+          },
+          {
+            q: "What happens to a `Greeting.tsx` placed next to `page.tsx`?",
+            options: [
+              "It stays private and gets no URL",
+              "It becomes the route `/01-routing/Greeting`",
+              "It causes a build error",
+            ],
+            answer: 0,
+            explanation: "Only `page.tsx` and `route.ts` are routable, so components can live next to the page.",
+          },
+          {
+            q: "What does a folder named `(marketing)` do?",
+            options: [
+              "Makes every page inside it private",
+              "Matches any value in that part of the URL",
+              "Groups files without adding a URL segment",
+            ],
+            answer: 2,
+            explanation: "`app/(marketing)/about/page.tsx` is served at `/about`.",
+          },
+        ]}
+      />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
+import Quiz from "../_lib/Quiz";
 import Source from "../_lib/Source";
 import BookList from "./BookList";
 import Greeting from "./Greeting";
@@ -102,6 +103,41 @@ export default function Page({ searchParams }: PageProps<"/03-dynamic-routes">) 
           database query, and call <code>notFound()</code> for anything that does not exist.
         </p>
       </div>
+
+      <Quiz
+        questions={[
+          {
+            q: "How does a page read `params`?",
+            options: [
+              "As a plain object, synchronously",
+              "With the `useRouter()` hook",
+              "As a Promise, awaited in an `async` component",
+            ],
+            answer: 2,
+            explanation: "`params` is a Promise, so the page is `async` and awaits it.",
+          },
+          {
+            q: "What does `[[...parts]]` match that `[...parts]` does not?",
+            options: [
+              "The base route itself, like `/docs`",
+              "Only a single segment",
+              "The query string",
+            ],
+            answer: 0,
+            explanation: "It is an optional catch-all, so zero segments also match.",
+          },
+          {
+            q: "Why does the component that reads `searchParams` sit inside `<Suspense>`?",
+            options: [
+              "`searchParams` only works in Client Components",
+              "Search params only exist when a real request arrives",
+              "`<Suspense>` validates the query string",
+            ],
+            answer: 1,
+            explanation: "The rest of the page is prerendered; only that part is filled in per request.",
+          },
+        ]}
+      />
     </>
   );
 }

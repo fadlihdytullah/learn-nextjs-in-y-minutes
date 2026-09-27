@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import Figure from "../_lib/Figure";
+import Quiz from "../_lib/Quiz";
 import Source from "../_lib/Source";
 import { getMessages } from "../_lib/db";
 import MessageCount from "./MessageCount";
@@ -100,6 +101,41 @@ export default function Page() {
           you opt in with <code>&quot;use cache&quot;</code> (lesson 08).
         </p>
       </div>
+
+      <Quiz
+        questions={[
+          {
+            q: "What does wrapping a slow component in `<Suspense>` do?",
+            options: [
+              "Caches its data for later requests",
+              "Sends the rest of the page first, then streams the component in",
+              "Moves the component to the browser",
+            ],
+            answer: 1,
+            explanation: "The fallback shows in its place until the real content is ready.",
+          },
+          {
+            q: "Two independent requests are awaited one after another. How do you speed it up?",
+            options: [
+              "Start them together with `Promise.all`",
+              "Move them into `useEffect`",
+              "Add `\"use client\"` to the component",
+            ],
+            answer: 0,
+            explanation: "The total time becomes the slowest request instead of the sum.",
+          },
+          {
+            q: "How does a Client Component read a Promise passed from the server?",
+            options: [
+              "With `await` in the component body",
+              "With `useEffect` and state",
+              "With React's `use()`",
+            ],
+            answer: 2,
+            explanation: "`use()` suspends until the data arrives.",
+          },
+        ]}
+      />
     </>
   );
 }

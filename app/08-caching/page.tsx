@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import Figure from "../_lib/Figure";
+import Quiz from "../_lib/Quiz";
 import Source from "../_lib/Source";
 import CachedClock from "./CachedClock";
 import LiveClock from "./LiveClock";
@@ -125,6 +126,41 @@ export default function Page() {
           one user&apos;s data can be served to another.
         </p>
       </div>
+
+      <Quiz
+        questions={[
+          {
+            q: "With Cache Components, what is cached by default?",
+            options: [
+              "Every `fetch` call",
+              "Nothing, until you add `\"use cache\"`",
+              "Every Server Component",
+            ],
+            answer: 1,
+            explanation: "You decide what is cached, right where the work happens.",
+          },
+          {
+            q: "What does `cacheLife` set?",
+            options: [
+              "How long a cached result is reused",
+              "Which tag a cache entry has",
+              "Whether a component streams",
+            ],
+            answer: 0,
+            explanation: "Presets range from `seconds` to `max`.",
+          },
+          {
+            q: "Where does `updateTag` work?",
+            options: [
+              "Anywhere, including Route Handlers",
+              "Only in Client Components",
+              "Only in Server Actions",
+            ],
+            answer: 2,
+            explanation: "From a Route Handler, use `revalidateTag(tag, \"max\")` instead.",
+          },
+        ]}
+      />
     </>
   );
 }

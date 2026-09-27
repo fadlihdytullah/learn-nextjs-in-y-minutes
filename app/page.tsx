@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Continue from "./_lib/Continue";
 import { lessons } from "./_lib/lessons";
 import PixelTitle from "./_lib/PixelTitle";
 
@@ -21,6 +22,8 @@ export default function Home() {
         <li>App Router</li>
         <li>TypeScript</li>
       </ul>
+
+      <Continue />
 
       <ol className="steps">
         {lessons.map((l, i) => (

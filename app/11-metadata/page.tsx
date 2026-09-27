@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Quiz from "../_lib/Quiz";
 import Source from "../_lib/Source";
 
 export const metadata: Metadata = {
@@ -121,6 +122,41 @@ export default function Page() {
           on deploy, or preview cards will point at localhost.
         </p>
       </div>
+
+      <Quiz
+        questions={[
+          {
+            q: "In the title template `%s | Learn Next.js in Y Minutes`, what replaces `%s`?",
+            options: [
+              "The site URL",
+              "Each page's own title",
+              "The page description",
+            ],
+            answer: 1,
+            explanation: "Pages without a title get the `default` instead.",
+          },
+          {
+            q: "When should you export `generateMetadata` instead of a `metadata` object?",
+            options: [
+              "When the title depends on the URL or a database",
+              "When the page is fully static",
+              "When you need a favicon",
+            ],
+            answer: 0,
+            explanation: "It is async and receives the same `params` as the page.",
+          },
+          {
+            q: "Why does the root layout set `metadataBase`?",
+            options: [
+              "To set the default title",
+              "To turn on `generateMetadata`",
+              "Social apps need absolute URLs for images",
+            ],
+            answer: 2,
+            explanation: "Relative URLs like the generated `og:image` are resolved against it.",
+          },
+        ]}
+      />
     </>
   );
 }

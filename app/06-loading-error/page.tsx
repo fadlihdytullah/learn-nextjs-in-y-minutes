@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Quiz from "../_lib/Quiz";
 import Source from "../_lib/Source";
 import Posts from "./Posts";
 
@@ -123,6 +124,41 @@ export default function Page({ searchParams }: PageProps<"/06-loading-error">) {
           root layout still shows a friendly page instead of a blank screen.
         </p>
       </div>
+
+      <Quiz
+        questions={[
+          {
+            q: "`loading.tsx` works the same as wrapping the page in what?",
+            options: [
+              "An error boundary",
+              "`<Suspense>` with the loading UI as fallback",
+              "A second layout",
+            ],
+            answer: 1,
+            explanation: "Next.js shows it instantly while the page waits for data.",
+          },
+          {
+            q: "Why must `error.tsx` be a Client Component?",
+            options: [
+              "Error boundaries run in the browser",
+              "It needs to read cookies",
+              "Server Components cannot render text",
+            ],
+            answer: 0,
+            explanation: "It receives the `error` and a `retry()` function that renders the segment again.",
+          },
+          {
+            q: "A record the user asked for does not exist. What should the page do?",
+            options: [
+              "Throw an error for `error.tsx` to catch",
+              "Return an empty page",
+              "Call `notFound()`",
+            ],
+            answer: 2,
+            explanation: "A missing record is an expected problem, so `not-found.tsx` renders instead.",
+          },
+        ]}
+      />
     </>
   );
 }
