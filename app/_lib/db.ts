@@ -1,7 +1,3 @@
-// A fake database: plain in-memory arrays plus an artificial delay.
-// The delay makes it behave like real I/O, so Next.js treats it as uncached data.
-// Data resets whenever the server restarts.
-
 export type Post = { slug: string; title: string; body: string };
 export type Message = { id: number; name: string; text: string };
 

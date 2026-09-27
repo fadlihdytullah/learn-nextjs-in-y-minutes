@@ -1,4 +1,3 @@
-// Pixel shield, OpenCode-style: solid frame, lower half filled. # = frame, o = fill.
 const rows = [
   "#######",
   "#.....#",

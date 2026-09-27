@@ -18,22 +18,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  // Base for absolute URLs like og:image. Set SITE_URL when you deploy.
   metadataBase: new URL(process.env.SITE_URL ?? "http://localhost:3000"),
-  // `%s` is replaced by each page's own `title` (see lesson 11).
   title: {
     default: "Learn Next.js in Y Minutes",
     template: "%s | Learn Next.js in Y Minutes",
   },
-  description: "Runnable, commented lessons for the latest Next.js.",
+  description: "Short lessons with live demos for the latest Next.js.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    // suppressHydrationWarning: the script below may add data-theme before React hydrates.
     <html lang="en" className={`${inter.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <head>
-        {/* Runs before first paint, so a saved theme never flashes the wrong colors. */}
         <script
           dangerouslySetInnerHTML={{
             __html: `try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}`,

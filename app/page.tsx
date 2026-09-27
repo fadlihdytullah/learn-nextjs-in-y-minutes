@@ -11,13 +11,13 @@ export default function Home() {
 
       <PixelTitle lines={["learn next.js", "in y minutes"]} label="Learn Next.js in Y minutes" />
       <p className="lead">
-        Twelve short lessons, each a real route: a live demo on top, the commented
-        source that renders it below. Read it here, then open the file in your
-        editor and tinker.
+        Twelve short lessons. Each one explains an idea in a few sentences, runs a
+        live demo right on the page, and shows the code behind it. Every demo is a
+        real route you can open in your editor and change.
       </p>
 
       <ul className="checks">
-        <li>Runnable</li>
+        <li>Live demos</li>
         <li>App Router</li>
         <li>TypeScript</li>
       </ul>

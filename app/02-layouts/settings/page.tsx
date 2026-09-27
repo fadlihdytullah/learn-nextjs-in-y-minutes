@@ -1,4 +1,3 @@
-// Only this page's content is swapped in; the layout above stays mounted.
 export default function SettingsPage() {
   return (
     <p>

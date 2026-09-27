@@ -1,7 +1,5 @@
 "use client";
 
-// No React state: the source of truth is <html data-theme>, set before paint by
-// the inline script in the root layout. CSS shows the matching icon.
 export default function ThemeToggle() {
   function toggle() {
     const root = document.documentElement;

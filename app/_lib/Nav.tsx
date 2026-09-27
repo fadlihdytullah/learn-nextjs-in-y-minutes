@@ -8,7 +8,6 @@ import { lessons } from "./lessons";
 export default function Nav() {
   const pathname = usePathname();
 
-  // On mobile the nav is a horizontal strip: keep the active lesson in view.
   useEffect(() => {
     document
       .querySelector('.nav [aria-current="page"]')
@@ -17,10 +16,10 @@ export default function Nav() {
 
   return (
     <nav className="nav" aria-label="Lessons">
-      <p className="nav-label">Lessons</p>
       <ol>
         {lessons.map((l, i) => (
           <li key={l.slug}>
+            {l.section !== lessons[i - 1]?.section && <p className="nav-label">{l.section}</p>}
             <Link
               href={`/${l.slug}`}
               aria-current={pathname.startsWith(`/${l.slug}`) ? "page" : undefined}

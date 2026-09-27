@@ -1,6 +1,3 @@
-/* Dark-first, quiet neutrals, hairline borders, one blue accent.
-   light-dark(light, dark) picks a value from the active `color-scheme`:
-   the OS setting by default, or the user's choice via <html data-theme>. */
 :root {
   color-scheme: light dark;
   --bg: light-dark(#fafaf9, #151515);
@@ -26,7 +23,6 @@
   color-scheme: dark;
 }
 
-/* Shiki emits both themes as CSS variables; pick one per color scheme. */
 .shiki,
 .shiki span {
   color: light-dark(var(--shiki-light), var(--shiki-dark));
@@ -128,7 +124,6 @@ body {
   stroke-linecap: round;
 }
 
-/* Show the icon of the theme you'd switch TO. */
 .icon-sun {
   display: none;
 }
@@ -185,7 +180,7 @@ main > * + * {
 /* ─── Sidebar nav ───────────────────────────────────────── */
 
 .nav-label {
-  margin: 0 10px 8px;
+  margin: 0 10px 6px;
   color: var(--fg-subtle);
   font-size: 12px;
 }
@@ -195,6 +190,10 @@ main > * + * {
   flex-direction: column;
   gap: 2px;
   list-style: none;
+}
+
+.nav li:not(:first-child) > .nav-label {
+  margin-top: 18px;
 }
 
 .nav a {
@@ -381,7 +380,6 @@ main .steps {
   padding: 0 0 28px 52px;
 }
 
-/* Connector line between the numbered circles. */
 .steps li:not(:last-child)::before {
   content: "";
   position: absolute;
@@ -422,34 +420,29 @@ main .steps {
   margin-top: 2px;
 }
 
-/* ─── Lesson blocks ─────────────────────────────────────── */
+/* ─── Lesson blocks ───────────────────────────────────── */
 
-.demo {
-  padding: 24px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: linear-gradient(160deg, var(--surface), var(--bg-elev) 70%);
-  box-shadow: inset 0 1px 0 var(--highlight);
+main > h2 {
+  margin-top: 44px;
 }
 
-.demo::before {
-  content: "Live demo";
-  display: block;
-  margin-bottom: 14px;
-  color: var(--fg-subtle);
-  font-size: 12px;
+main table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
 }
 
-.demo > * + * {
-  margin-top: 12px;
+main th,
+main td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--fg-muted);
+  text-align: left;
 }
 
-.demo img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  border: 1px solid var(--border);
-  border-radius: 8px;
+main th {
+  color: var(--fg);
+  font-weight: 500;
 }
 
 .source {
@@ -488,7 +481,127 @@ main .steps {
   line-height: 1.7;
 }
 
-.output {
+.source .output {
+  border-top: 1px dashed var(--border-strong);
+  background: var(--bg) !important;
+  color: var(--fg-muted);
+  white-space: pre-wrap;
+}
+
+.source .output::before {
+  content: "Output";
+  display: block;
+  margin-bottom: 6px;
+  color: var(--fg-subtle);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 12px;
+}
+
+.tip,
+.prod {
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--fg-subtle);
+  border-radius: 8px;
+  background: var(--bg-elev);
+}
+
+.prod {
+  border-left-color: var(--accent);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--accent) 6%, var(--surface)), var(--bg-elev) 70%);
+}
+
+.tip::before,
+.prod::before {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--fg-subtle);
+  font-size: 12px;
+}
+
+.tip::before {
+  content: "Tip";
+}
+
+.prod::before {
+  content: "In production";
+  color: var(--accent);
+}
+
+.tip > * + *,
+.prod > * + * {
+  margin-top: 10px;
+}
+
+.figure {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-elev);
+}
+
+.figure img,
+.figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.figure svg {
+  padding: 20px;
+  color: var(--fg-muted);
+  font-family: var(--font-mono), monospace;
+}
+
+.figure figcaption {
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  color: var(--fg-subtle);
+  font-size: 13px;
+}
+
+.figure-pending {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  margin: 12px;
+  padding: 16px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 8px;
+  color: var(--fg-subtle);
+  font-size: 13px;
+  text-align: center;
+}
+
+.demo {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(160deg, var(--surface), var(--bg-elev) 70%);
+  box-shadow: inset 0 1px 0 var(--highlight);
+}
+
+.demo::before {
+  content: "Live demo";
+  display: block;
+  margin-bottom: 14px;
+  color: var(--fg-subtle);
+  font-size: 12px;
+}
+
+.demo > * + * {
+  margin-top: 12px;
+}
+
+.demo img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.demo .output {
   padding: 12px 14px;
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -499,7 +612,6 @@ main .steps {
   white-space: pre-wrap;
 }
 
-/* Lesson 02 tabs: console-style underline. */
 .tabs {
   display: flex;
   gap: 24px;
@@ -524,7 +636,6 @@ main .steps {
   color: var(--fg);
 }
 
-/* Lesson 07 form. */
 .form {
   display: flex;
   flex-wrap: wrap;
@@ -583,7 +694,6 @@ main > .prev-next {
 
 /* ─── Footer ────────────────────────────────────────────── */
 
-/* Mirrors the top bar: full width of the content column, so its border meets the sidebar's. */
 .footer {
   display: flex;
   align-items: center;
@@ -599,7 +709,7 @@ main > .prev-next {
   color: var(--fg-muted);
 }
 
-/* ─── Mobile: sidebar becomes a horizontal strip ────────── */
+/* ─── Mobile ────────────────────────────────────────────── */
 
 @media (max-width: 800px) {
   .shell {
@@ -630,6 +740,7 @@ main > .prev-next {
   .demo {
     padding: 18px;
   }
+
 }
 
 @media (prefers-reduced-motion: reduce) {

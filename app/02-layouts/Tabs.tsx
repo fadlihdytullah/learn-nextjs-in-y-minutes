@@ -1,4 +1,4 @@
-"use client"; // Hooks like usePathname only work in Client Components (lesson 04).
+"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,13 +9,11 @@ const tabs = [
 ];
 
 export default function Tabs() {
-  const pathname = usePathname(); // Current URL path, e.g. "/02-layouts/settings".
+  const pathname = usePathname();
 
   return (
     <nav className="tabs">
       {tabs.map((tab) => (
-        // <Link> = <a> + client-side navigation (no full reload) + prefetching
-        // of the target route when the link scrolls into view.
         <Link
           key={tab.href}
           href={tab.href}
@@ -27,8 +25,3 @@ export default function Tabs() {
     </nav>
   );
 }
-
-// Navigating from code instead of a link:
-//   const router = useRouter();       // from "next/navigation"
-//   router.push("/02-layouts/settings");
-//   router.back();

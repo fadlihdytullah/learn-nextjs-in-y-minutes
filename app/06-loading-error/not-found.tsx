@@ -1,7 +1,5 @@
 import Link from "next/link";
 
-// Rendered by notFound() in this segment. HTTP status is 404, or 200 if the
-// response was already streaming (like here, behind loading.tsx).
 export default function NotFound() {
   return (
     <div className="demo">

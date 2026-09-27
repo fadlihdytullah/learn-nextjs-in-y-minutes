@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og";
 
-// Social preview image, rendered from JSX to PNG (at build time, since nothing here is dynamic).
 export const alt = "Learn Next.js in Y Minutes";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";

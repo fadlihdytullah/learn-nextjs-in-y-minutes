@@ -1,5 +1,3 @@
-// Pixel wordmark in the "suikodev" style: 6-row grid, 1-cell gap between glyphs.
-// Row 0 is the ascender row; x-height letters use rows 1-5.
 const glyphs: Record<string, string[]> = {
   a: ["....", "####", "...#", "####", "#..#", "####"],
   e: ["....", "####", "#..#", "####", "#...", "####"],
